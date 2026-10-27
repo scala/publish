@@ -16,7 +16,7 @@ object Versions {
   def utest         = "0.9.5"
 }
 
-object publish extends Publish
+object `scala-publish` extends Publish
 
 object Deps {
   def coursierCache = mvn"io.get-coursier::coursier-cache:${Versions.coursier}"
@@ -58,7 +58,7 @@ trait Publish extends ScalaModule with Published with ScalafixModule {
 
 def publishOrg: String = "org.scala-lang"
 def ghOrg: String      = "scala"
-def ghName: String     = "publish"
+def ghName: String     = "scala-publish"
 
 trait Published extends SonatypeCentralPublishModule {
   import mill.scalalib.publish.*
@@ -67,7 +67,7 @@ trait Published extends SonatypeCentralPublishModule {
     organization = publishOrg,
     url = s"https://github.com/$ghOrg/$ghName",
     licenses = Seq(License.`Apache-2.0`),
-    versionControl = VersionControl.github("scala", "publish"),
+    versionControl = VersionControl.github(ghOrg, ghName),
     developers = Seq(
       Developer("alexarchambault", "Alex Archambault", "https://github.com/alexarchambault"),
       Developer("Gedochao", "Piotr Chabelski", "https://github.com/Gedochao"),
